@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">VoiceCam</string>
+    <string name="say_cheese">Tap, Say Cheese/Hello</string>
+    <string name="switch_camera_button_alt">Switch camera</string>
+    <string name="gallery_button_alt">View Image</string>
+    <string name="listening">Listening...</string>
+</resources>
