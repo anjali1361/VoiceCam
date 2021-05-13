@@ -5,13 +5,18 @@
     <dimen name="text_size_mic">18sp</dimen>
 
     <dimen name="padding">10dp</dimen>
-    <dimen name="margin_toolbar_swip_camera_view">120dp</dimen>
+    <dimen name="padding_medium">20dp</dimen>
+    <dimen name="margin_toolbar_swip_camera_view">145dp</dimen>
     <dimen name="margin_toolbar_swip_camera_view_land">410dp</dimen>
-    <dimen name="margin">15dp</dimen>
+    <dimen name="margin">10dp</dimen>
+    <dimen name="margin_xsmall">1dp</dimen>
     <dimen name="margin_small">5dp</dimen>
     <dimen name="margin_medium">25dp</dimen>
+    <dimen name="margin_large">270dp</dimen>
+    <dimen name="margin_xlarge">220dp</dimen>
     <dimen name="stroke_small">1dp</dimen>
 
     <dimen name="round_button_small">36dp</dimen>
     <dimen name="round_button_medium">40dp</dimen>
+    <dimen name="margin_bottom">56dp</dimen>
 </resources>

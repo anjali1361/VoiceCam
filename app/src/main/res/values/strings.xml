@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">VoiceCam</string>
-    <string name="say_cheese">Tap, Say Cheese/Hello</string>
+    <string name="say_cheese">Tap, Say Hello</string>
     <string name="switch_camera_button_alt">Switch camera</string>
     <string name="gallery_button_alt">View Image</string>
     <string name="listening">Listening...</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="share_hint">Share using</string>
+    <string name="delete_dialog">Delete current photo?</string>
+    <string name="delete_title">Confirm</string>
+    <string name="decrypt_image">Decrypt Image</string>
 </resources>
