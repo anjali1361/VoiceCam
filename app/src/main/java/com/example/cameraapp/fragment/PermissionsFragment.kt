@@ -44,6 +44,7 @@ class PermissionsFragment : Fragment() {
                 navigateToCamera()
             } else {
                 Toast.makeText(context, "Permission request denied", Toast.LENGTH_LONG).show()
+                activity?.finish()
             }
         }
     }

@@ -1,13 +1,21 @@
 <resources>
     <string name="app_name">VoiceCam</string>
-    <string name="say_cheese">Tap, Say Hello</string>
+    <string name="say_cheese">Tap, Say Hello/Hi</string>
     <string name="switch_camera_button_alt">Switch camera</string>
     <string name="gallery_button_alt">View Image</string>
     <string name="listening">Listening...</string>
-    <string name="camera">Camera</string>
-    <string name="gallery">Gallery</string>
-    <string name="share_hint">Share using</string>
-    <string name="delete_dialog">Delete current photo?</string>
-    <string name="delete_title">Confirm</string>
+    <string name="tap_to_record_audio">Tap to record Audio</string>
+    <string name="go_back">Go back to take Pictures</string>
+    <string name="share_hint">Share</string>
+    <string name="delete">Delete</string>
+    <string name="delete_dialog">The image will be deleted from respective folder?</string>
+    <string name="delete_title">Delete</string>
     <string name="decrypt_image">Decrypt Image</string>
+    <string name="encrypt_selected_media">Encrypt</string>
+    <string name="view_image">View Image</string>
+    <string name="no_images_are_captured">No images are Captured</string>
+    <string name="security_code">Security Code</string>
+    <string name="enter_security_code">Enter 5-digit security code</string>
+    <string name="note_keep_this_code_handy_unless_you_cann_t_be_able_to_recover_your_encrypted_image">Note: Keep this code handy unless you cann\'t be able to recover your encrypted image</string>
+    <string name="decrypt">Decrypt</string>
 </resources>

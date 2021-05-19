@@ -8,21 +8,21 @@ import java.io.File
 class PrefConfig {
 
     private val MY_PREFERENCE_NAME = "com.example.cameraapp"
-    private val SAVED_URI = "SAVED_URI"
+    private val SAVED_URI = "SECURITY_CODE"
 
-     fun saveUriToPref(context: Context, uri: File){
+     fun saveCodeToPref(context: Context, code:String){
         val pref = context.getSharedPreferences(MY_PREFERENCE_NAME,Context.MODE_PRIVATE)
         val editor = pref.edit()
-        editor.putString(SAVED_URI, uri.toString())
+        editor.putString(SAVED_URI, code)
         editor.apply()
     }
 
-    fun loadUriFromPref(context: Context): String? {
+    fun loadCodeFromPref(context: Context): String? {
         val pref = context.getSharedPreferences(MY_PREFERENCE_NAME,Context.MODE_PRIVATE)
         return pref.getString(SAVED_URI,"")
     }
 
-    fun removeUriFromPref(context: Context){
+    fun removeCodeFromPref(context: Context){
         val pref = context.getSharedPreferences(MY_PREFERENCE_NAME,Context.MODE_PRIVATE)
         val editor = pref.edit()
         editor.remove(SAVED_URI)

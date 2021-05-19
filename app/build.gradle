@@ -2,9 +2,15 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'androidx.navigation.safeargs.kotlin'//plugin for safe args in my_nav
+    id 'kotlin-android-extensions'//for @Parcelize annotation
 }
 
 android {
+
+    aaptOptions {
+        noCompress 'xml'
+    }
+
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
@@ -63,19 +69,20 @@ dependencies {
     // CameraX Extensions library
      implementation 'androidx.camera:camera-extensions:1.0.0-alpha20'
 
-    //RxJava2
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.3'
-    implementation  'io.reactivex.rxjava2:rxkotlin:2.2.0'
-
     implementation 'androidx.recyclerview:recyclerview:1.2.0'
     implementation 'androidx.cardview:cardview:1.0.0'
 
     // Glide
     //Image Loaders
-    annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
-    implementation 'com.android.support:support-annotations:28.0.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    implementation ('org.simpleframework:simple-xml:2.7.1'){//simple framework library
+        exclude group: 'xpp3', module: 'xpp3'
+        exclude group: 'stax', module: 'stax-api'
+        exclude group: 'stax', module: 'stax'
+    }
+
+    implementation 'android.arch.lifecycle:extensions:1.1.1'//ViewModelProviders
 
 }

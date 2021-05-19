@@ -109,6 +109,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="@dimen/margin_small"
                     android:layout_marginEnd="@dimen/margin_medium"
+                    android:contentDescription="@string/tap_to_record_audio"
                     android:background="@android:color/transparent"
                     android:paddingEnd="@dimen/padding"
                     android:scaleType="fitCenter"

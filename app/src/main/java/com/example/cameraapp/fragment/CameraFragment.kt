@@ -113,9 +113,6 @@ class CameraFragment:Fragment() {
 
         outputDirectory = MainActivity.getOutputDirectory(requireContext())
 
-        context?.let { prefConfig.saveUriToPref(it,outputDirectory) }
-        Log.d(Request.TAG, outputDirectory.toString())
-
         // Wait for the views to be properly laid out
         viewFinder.post {
 
@@ -192,7 +189,7 @@ class CameraFragment:Fragment() {
 
     private fun output() {
 
-        if(text.text.toString() == "cheese" || text.text.toString()== "hello" || text.text.toString()== "hello hello" || text.text.toString()== "hello" || text.text.toString()== "hallo"){
+        if(text.text.toString() == "hi" || text.text.toString() == "Hi" || text.text.toString()== "hello" || text.text.toString()== "hello hello" || text.text.toString()== "hello" || text.text.toString()== "hallo"){
             Log.d(Request.TAG,"Stop Listening To Speech")
             // speech.stopListening()
             takePhoto()
@@ -481,6 +478,7 @@ class CameraFragment:Fragment() {
         cameraExecutor.shutdown()
     }
 
+
     private class LuminosityAnalyzer(listener: LumaListener? = null) : ImageAnalysis.Analyzer {
         private val frameRateWindow = 8
         private val frameTimestamps = ArrayDeque<Long>(5)
@@ -561,6 +559,8 @@ class CameraFragment:Fragment() {
             image.close()
         }
     }
+    
+    
 
 //    companion object {
 //

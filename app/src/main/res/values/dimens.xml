@@ -15,6 +15,7 @@
     <dimen name="margin_large">270dp</dimen>
     <dimen name="margin_xlarge">220dp</dimen>
     <dimen name="stroke_small">1dp</dimen>
+    <dimen name="edge_round">10dp</dimen>
 
     <dimen name="round_button_small">36dp</dimen>
     <dimen name="round_button_medium">40dp</dimen>

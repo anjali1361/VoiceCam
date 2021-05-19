@@ -49,12 +49,12 @@ object FileUtils {
         }
     }
 
-    @Throws(IOException::class)
-    private fun copyFile(inputStream: InputStream, out: OutputStream) {
-        out.write(inputStream.readBytes())
-        out.flush()
-        out.close()
-    }
+  //  @Throws(IOException::class)
+//    private fun copyFile(inputStream: InputStream, out: OutputStream) {
+//        out.write(inputStream.readBytes())
+//        out.flush()
+//        out.close()
+//    }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     fun save(file: File, data: ByteArray, bmp: Bitmap?): File {
@@ -73,40 +73,40 @@ object FileUtils {
         return file
     }
 
-    fun createDirIfNotExists(path: String): Boolean {
-        var ret = true
-        val file = File(path)
-        if (!file.exists()) {
-            if (!file.mkdirs()) {
-                ret = false
-            }
-        }
-        return ret
-    }
+//    fun createDirIfNotExists(path: String): Boolean {
+//        var ret = true
+//        val file = File(path)
+//        if (!file.exists()) {
+//            if (!file.mkdirs()) {
+//                ret = false
+//            }
+//        }
+//        return ret
+//    }
 
-    fun deleteFile(path: String): Boolean {
-        val f = File(path)
+//    fun deleteFile(path: String): Boolean {
+//        val f = File(path)
+//
+//        return if (f.exists()) {
+//            f.delete()
+//        } else false
+//
+//    }
 
-        return if (f.exists()) {
-            f.delete()
-        } else false
+//    fun deleteFile(f: File): Boolean {
+//
+//        return if (f.exists()) {
+//            f.delete()
+//        } else false
+//
+//    }
 
-    }
-
-    fun deleteFile(f: File): Boolean {
-
-        return if (f.exists()) {
-            f.delete()
-        } else false
-
-    }
-
-    fun deleteDir(fileOrDirectory: File) {
-        if (fileOrDirectory.isDirectory)
-            for (child in fileOrDirectory.listFiles())
-                deleteDir(child)
-        fileOrDirectory.delete()
-    }
+//    fun deleteDir(fileOrDirectory: File) {
+//        if (fileOrDirectory.isDirectory)
+//            for (child in fileOrDirectory.listFiles())
+//                deleteDir(child)
+//        fileOrDirectory.delete()
+//    }
 
 //    fun copyAssets(context: Context) {
 //        val assetManager = context.assets
