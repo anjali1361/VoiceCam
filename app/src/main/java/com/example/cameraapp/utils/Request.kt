@@ -15,8 +15,8 @@ object Request {
     const val ANIMATION_FAST_MILLIS = 50L
     const val ANIMATION_SLOW_MILLIS = 100L
 
-    const val REQUEST_CODE_PERMISSIONS = 10
-    val REQUIRED_PERMISSIONS= arrayOf(android.Manifest.permission.CAMERA,android.Manifest.permission.RECORD_AUDIO)
+//    const val REQUEST_CODE_PERMISSIONS = 10
+//    val REQUIRED_PERMISSIONS= arrayOf(android.Manifest.permission.CAMERA,android.Manifest.permission.RECORD_AUDIO)
 
     /** Helper function used to create a timestamped file */
     fun createFile(baseFolder: File, format: String, extension: String) =

@@ -2,12 +2,12 @@ package com.example.cameraapp.fragment
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
-import android.widget.ProgressBar
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
@@ -20,6 +20,7 @@ import com.example.cameraapp.model.row
 import com.example.cameraapp.utils.padWithDisplayCutout
 import java.io.File
 import java.util.*
+import kotlin.collections.ArrayList
 
 val EXTENSION_WHITELIST = arrayOf("JPG")
 
@@ -40,7 +41,7 @@ class GalleryFragment internal constructor() : Fragment() {
    // var show=true
 
     private lateinit var mediaList: MutableList<File>
-    private lateinit var imageList:MutableList<row>
+    private var imageList:ArrayList<row> = ArrayList()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,9 +55,12 @@ class GalleryFragment internal constructor() : Fragment() {
             EXTENSION_WHITELIST.contains(file.extension.toUpperCase(Locale.ROOT))
         }?.sortedDescending()?.toMutableList() ?: mutableListOf()
 
-//        for(i in mediaList.indices){
-//            mediaList[i].copyTo(imageList[i].imagePath)
-//        }
+        if(mediaList.size != 0){
+            for(i in 0..mediaList.size-1){
+                Log.d("Gallery","index :"+i)
+                imageList.add(row(mediaList[i]))
+            }
+        }
 
     }
 
@@ -93,13 +97,13 @@ class GalleryFragment internal constructor() : Fragment() {
 
     private fun setUpListView() {
 
-        if(mediaList.isEmpty()){
+        if(imageList.isEmpty()){
           //  showHideProgress(false)
               back_button.visibility = View.VISIBLE
               blank.visibility = View.VISIBLE
 
         }else{
-            adapter = StaggeredRecyclerAdapter(requireContext(),mediaList)
+            adapter = StaggeredRecyclerAdapter(requireContext(),imageList)
             manager= StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL)
 
             adapter.notifyDataSetChanged()

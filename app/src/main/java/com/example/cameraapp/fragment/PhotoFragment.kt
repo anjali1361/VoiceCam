@@ -25,6 +25,7 @@ import com.example.cameraapp.BuildConfig
 import com.example.cameraapp.R
 import com.example.cameraapp.model.ImageViewModel
 import com.example.cameraapp.model.row
+import com.example.cameraapp.utils.OtpEditText
 import com.example.cameraapp.utils.PrefConfig
 import com.example.cameraapp.utils.showImmersive
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -35,8 +36,9 @@ import java.io.File
 class PhotoFragment internal constructor() : Fragment() {
 
     private val args: PhotoFragmentArgs by navArgs()
-   // var row:row?= null
+    private lateinit var row: row
     lateinit var file:File
+    var isEncrypted:Boolean = false
     lateinit var image:ImageView
     lateinit var back:ImageView
     lateinit var bottom_nav:BottomNavigationView
@@ -52,7 +54,10 @@ class PhotoFragment internal constructor() : Fragment() {
         super.onCreate(savedInstanceState)
 
        // row = args.row
-        file = File(args.rootDirectory)
+        row= args.row
+        file = row.imagePath
+        isEncrypted = row.isencrypted
+
     }
 
     override fun onCreateView(
@@ -71,6 +76,10 @@ class PhotoFragment internal constructor() : Fragment() {
         bottom_nav.menu.getItem(0).setCheckable(false)//to not to select share icon by default in bottom nav
 
 
+        if(isEncrypted){
+            changeBottomNav(true)
+        }
+
         bottom_nav.setOnNavigationItemSelectedListener {
 
             when(it.itemId){
@@ -86,6 +95,10 @@ class PhotoFragment internal constructor() : Fragment() {
                     it.setCheckable(true)
                     setUpSecurityCodeAndEncrypt()
                 }
+                R.id.decrypt ->{
+                    it.setCheckable(true)
+                    setUpSecurityCodeAndEncrypt()
+                }
             }
            return@setOnNavigationItemSelectedListener true
         }
@@ -98,6 +111,7 @@ class PhotoFragment internal constructor() : Fragment() {
 
         Glide.with(requireActivity())
             .load(file)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(image)
 
     }
@@ -107,34 +121,34 @@ class PhotoFragment internal constructor() : Fragment() {
         val builder =  AlertDialog.Builder(requireContext())
         val inflator = requireActivity().layoutInflater
         val view =  inflator.inflate(R.layout.code_creation,null)
-        val enterCode = view.findViewById<EditText>(R.id.enterCode)
-        val cancel2 = view.findViewById<Button>(R.id.cancel2)
-        val ok2 = view.findViewById<Button>(R.id.ok2)
+        val enterCode = view.findViewById<OtpEditText>(R.id.enterCode)
+//        val cancel2 = view.findViewById<Button>(R.id.cancel2)
+//        val ok2 = view.findViewById<Button>(R.id.ok2)
 
         builder.setView(view)
         builder.setCancelable(false)
         val dialog = builder.create()
-        ok2.setOnClickListener{
-
-            val code = enterCode.text.toString()
-            if(code.equals("")){
-                Toast.makeText(requireContext(),"Please set the security code first",Toast.LENGTH_SHORT).show()
-                dialog.dismiss()
-                changeBottomNav(false)
-//                bottom_nav.menu.getItem(2).setCheckable(false)
-            }else{
-                //saveSecurityCodeToSharedPref(code)
-                encryptImage(code.toCharArray())
-                dialog.dismiss()
-                changeBottomNav(true)
-            }
-
-        }
-
-        cancel2.setOnClickListener{
-            dialog.dismiss()
-            changeBottomNav(false)
-        }
+//        ok2.setOnClickListener{
+//
+//            val code = enterCode.text.toString()
+//            if(code.equals("")){
+//                Toast.makeText(requireContext(),"Please set the security code first",Toast.LENGTH_SHORT).show()
+//                dialog.dismiss()
+//                changeBottomNav(false)
+////                bottom_nav.menu.getItem(2).setCheckable(false)
+//            }else{
+//                //saveSecurityCodeToSharedPref(code)
+//                encryptImage(code.toCharArray())
+//                dialog.dismiss()
+//                changeBottomNav(true)
+//            }
+//
+//        }
+//
+//        cancel2.setOnClickListener{
+//            dialog.dismiss()
+//            changeBottomNav(false)
+//        }
         dialog.showImmersive()
     }
 
@@ -144,9 +158,11 @@ class PhotoFragment internal constructor() : Fragment() {
 
     private fun encryptImage(code: CharArray) {
         bottom_nav_decrypt = true
+        isEncrypted = true
         viewModel.getImageEncrypted(file,code,image)
         Glide.with(requireActivity())
-            .load("")
+            .load(file)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(image)
              changeBottomNav(true)
 
@@ -164,12 +180,13 @@ class PhotoFragment internal constructor() : Fragment() {
          }
     }
 
-    private fun decryptImage(code: CharArray) {
-        val r: row? = file.let { viewModel.getImageDecypted(it,code) }
-        Glide.with(requireActivity())
-            .load(r?.imagePath)
-            .into(image)
-    }
+//    private fun decryptImage(code: CharArray) {
+//        val r: row? = file.let { viewModel.getImageDecypted(it,code) }
+//        Glide.with(requireActivity())
+//            .load(r?.imagePath)
+//            .diskCacheStrategy(DiskCacheStrategy.ALL)
+//            .into(image)
+//    }
 
     private fun shareSelectedImage() {
             // Create a sharing intent

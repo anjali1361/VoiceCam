@@ -59,13 +59,13 @@
             android:id="@+id/action_photo_to_camera"
             app:destination="@id/camera_fragment" />
 
-        <argument
-            android:name="root_directory"
-            app:argType="string" />
-
 <!--        <argument-->
-<!--            android:name="row"-->
-<!--            app:argType="com.example.cameraapp.model.row" />-->
+<!--            android:name="root_directory"-->
+<!--            app:argType="string" />-->
+
+        <argument
+            android:name="row"
+            app:argType="com.example.cameraapp.model.row" />
 
     </fragment>
 

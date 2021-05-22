@@ -17,10 +17,10 @@ import com.example.cameraapp.fragment.GalleryFragmentDirections
 import com.example.cameraapp.model.row
 import java.io.File
 
-class StaggeredRecyclerAdapter(context: Context, listItem: MutableList<File>): RecyclerView.Adapter<StaggeredRecyclerAdapter.ImageViewHolder>() {
+class StaggeredRecyclerAdapter(context: Context, listItem: ArrayList<row>): RecyclerView.Adapter<StaggeredRecyclerAdapter.ImageViewHolder>() {
 
     var context:Context
-    var listItem:MutableList<File>
+    var listItem:ArrayList<row>
 
     init {
         this.context = context
@@ -38,13 +38,13 @@ class StaggeredRecyclerAdapter(context: Context, listItem: MutableList<File>): R
     override fun onBindViewHolder(holder: StaggeredRecyclerAdapter.ImageViewHolder, position: Int) {
 
         Glide.with(this.context)
-            .load(listItem.get(position))
+            .load(listItem.get(position).imagePath)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(holder.img)
 
         holder.itemView.setOnClickListener{
             Navigation.findNavController(context as Activity, R.id.fragment_container).navigate(
-               GalleryFragmentDirections.actionGalleryToPhoto(listItem.get(position).toString()))
+               GalleryFragmentDirections.actionGalleryToPhoto(listItem.get(position)))
         }
     }
 

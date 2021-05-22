@@ -1,9 +1,6 @@
 package com.example.cameraapp.utils
 
 import android.content.Context
-import android.content.SharedPreferences
-import android.net.Uri
-import java.io.File
 
 class PrefConfig {
 

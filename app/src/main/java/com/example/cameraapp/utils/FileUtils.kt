@@ -1,20 +1,14 @@
 package com.example.cameraapp.utils
 
-import android.content.Context
 import android.graphics.Bitmap
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
 import java.io.*
 
 
-/**
- * Created by umair on 16/05/2017.
- */
-
 object FileUtils {
 
-    private val TAG = "FileUtils"
+   // private val TAG = "FileUtils"
 
     @Throws(IOException::class)
     fun copy(sourceLocation: File, targetLocation: File) {
